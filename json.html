@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Проверка логина и пароля</title>
+  <style>
+    body { font-family: Arial; max-width: 400px; margin: 40px auto; }
+    input { width: 100%; margin: 8px 0; padding: 8px; }
+    .message { font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h2>Проверка логина и пароля</h2>
+ 
+  <label>Логин:</label>
+  <input type="text" id="login" placeholder="Введите логин">
+ 
+  <label>Пароль:</label>
+  <input type="password" id="password" placeholder="Введите пароль">
+ 
+  <div class="message" id="message"></div>
+ 
+  <script>
+    const loginInput = document.getElementById('login');
+    const passwordInput = document.getElementById('password');
+    const message = document.getElementById('message');
+ 
+    // Проверка при каждом вводе символа
+    loginInput.addEventListener('input', check);
+    passwordInput.addEventListener('input', check);
+ 
+    function check() {
+      const login = loginInput.value.trim();
+      const password = passwordInput.value.trim();
+ 
+      if (login.length < 3) {
+        message.textContent = "Логин слишком короткий (мин. 3 символа)";
+        message.style.color = "red";
+      } else if (password.length < 5) {
+        message.textContent = "Пароль слишком короткий (мин. 5 символов)";
+        message.style.color = "red";
+      } else {
+        message.textContent = "✅ Всё введено правильно!";
+        message.style.color = "green";
+      }
+    }
+  </script>
+</body>
+</html>
