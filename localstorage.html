@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>JSON и LocalStorage</title>
+  <style>
+    body { font-family: Arial; max-width: 400px; margin: 40px auto; }
+    input { width: 100%; margin: 8px 0; padding: 8px; }
+    button { padding: 8px; width: 100%; background: green; color: white; border: none; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h2>Сохранение пользователя</h2>
+ 
+  <input type="text" id="login" placeholder="Введите логин">
+  <input type="password" id="password" placeholder="Введите пароль">
+  <button id="saveBtn">Сохранить</button>
+ 
+  <script>
+    const saveBtn = document.getElementById('saveBtn');
+ 
+    saveBtn.addEventListener('click', () => {
+      const user = {
+        login: document.getElementById('login').value.trim(),
+        password: document.getElementById('password').value.trim()
+      };
+ 
+      // Преобразуем объект в JSON
+      const jsonUser = JSON.stringify(user);
+ 
+      // Сохраняем JSON в Local Storage
+      localStorage.setItem('user', jsonUser);
+ 
+      alert("Пользователь сохранён в LocalStorage!");
+    });
+  </script>
+</body>
+</html>
